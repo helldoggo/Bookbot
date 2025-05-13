@@ -12,8 +12,11 @@ def get_book_text(path_to_file):
 
     
 def main():
-    print(get_book_text(path_to_file))
-    get_num_words(path_to_file)
+#    print(get_book_text(path_to_file))
+#    get_num_words(path_to_file)
     characters = char_count(path_to_file)
-    print(characters)
+    word_count =  get_num_words(path_to_file)
+    print(f"============ BOOKBOT ============\nAnalyzing book found at books/frankenstein.txt...\n----------- Word Count ----------\nFound {word_count[1]} total words")
+    for ch in characters:
+        print(ch,":", characters[ch])
 main()
