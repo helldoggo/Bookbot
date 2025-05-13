@@ -10,6 +10,17 @@ def char_count(path_to_file):
         counts[ch] = counts.get(ch, 0) + 1
     return counts
 
+def sort_characters(char_dict):
+    char_list = []
+
+    for ch, count in char_dict.items():
+        char_list.append({"char": ch, "num": count})
+
+    char_list.sort(key=lambda item: item["num"], reverse=True)
+
+    return char_list
+
+
     
 def get_num_words(filepath):
     
@@ -19,5 +30,5 @@ def get_num_words(filepath):
 
     def count_words(words: str):
         word_count = len(words)
-        return print(f"{word_count} words found in the document")
+        return word_count
     return split_into_words(filepath), count_words(split_into_words(filepath))

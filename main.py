@@ -1,8 +1,13 @@
-from stats import get_num_words
+import sys
+
+from stats import get_num_words, sort_characters
 from stats import char_count
 
-path_to_file = "books/frankenstein.txt"
-    
+print("Usage: python3 main.py <path_to_book>")
+
+
+
+path_to_file = sys.argv[1]
     
 def get_book_text(path_to_file):
     with open(path_to_file) as f:
@@ -15,8 +20,20 @@ def main():
 #    print(get_book_text(path_to_file))
 #    get_num_words(path_to_file)
     characters = char_count(path_to_file)
-    word_count =  get_num_words(path_to_file)
-    print(f"============ BOOKBOT ============\nAnalyzing book found at books/frankenstein.txt...\n----------- Word Count ----------\nFound {word_count[1]} total words")
-    for ch in characters:
-        print(ch,":", characters[ch])
+    def crunch_data():
+        print("============ BOOKBOT ============")
+        print("Analyzing book found at", path_to_file)
+        word_count = get_num_words(path_to_file)
+        print("----------- Word Count ----------")
+        print(f"Found {word_count[1]} total words")
+
+        characters = char_count(path_to_file)
+        sorted_chars = sort_characters(characters)
+
+        for item in sorted_chars:
+            print(f"{item['char']}: {item['num']}")
+
+        print("============= END ===============")
+    
+    crunch_data()
 main()
